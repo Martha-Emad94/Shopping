@@ -1,0 +1,41 @@
+
+<div class="container main my-3">
+   <ng-template #loadingTemplate>
+    <div class="loading">
+        <img  src="./assets/images/loading.svg"/>
+    </div>
+        <!-- يظهر مؤشر التحميل هنا -->
+      </ng-template>
+    <div class="row row-cols-2 row-cols-sm-2 row-cols-md-3 g-4 " >
+        <ng-container *ngIf="!loading; else loadingTemplate">
+
+        @for(product of filteredProducts ;track product.id){
+        <div class="col ">
+            
+                <div class="card animated-card " (click)="routerDetails(product.id)">
+                <div class="img">
+                    <img [src]="product.image" class="image py-2" alt="Product Image">
+                </div>
+                <div class="view-overlay">
+                    <span class="view-text">View</span>
+                  </div>
+                
+                
+                <div>
+                    <div class="card-body">
+                        <h5 class="card-title"> {{product.title}} </h5>
+                        <p class="card-text">Category : {{product.category}}</p>
+                        <p class="card-text">Count : {{product.rating.count}}</p>
+                        <p class="card-text">Rate : {{product.rating.rate}}</p>
+                        <p class="card-text">Price:{{ product.price | currency}}</p>
+                    </div>
+                </div>
+            </div>
+            
+
+
+        </div>
+        }
+    </ng-container>
+        
+</div>

@@ -1,0 +1,33 @@
+.m-4 {
+    margin: 16px;
+    position: fixed; /* Fixes the button's position relative to the viewport */
+    bottom: 20px; /* Distance from the bottom of the page */
+    right: 20px; /* Distance from the right edge of the page */
+    z-index: 1000; /* Ensures the button stays on top of other elements */
+  }
+  .button {
+    background-color: #c2bdbd; /* Light gray background */
+    border: none;
+    border-radius: 50%; /* Round button */
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Smooth background change */
+  }
+  
+  .button img {
+    width: 24px;
+    height: 24px;
+  }
+  
+  .button:hover {
+    background-color: #cccccc; /* Darker gray on hover */
+  }
+  
+  .button:active {
+    background-color: #aaaaaa; /* Even darker gray when clicked */
+  }
+  

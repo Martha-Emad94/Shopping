@@ -1,0 +1,65 @@
+<nav class="header" >
+  
+<mat-toolbar class="nav1 d-flex justify-content-between">
+    <div class="spacer">
+        <img src="./assets/images/search.svg"/>
+        <mat-form-field >
+            <input matInput type="text" placeholder="Search" class="search"
+            [formControl]="searchControl">
+          </mat-form-field>
+    </div>
+    
+   <div class="d-flex">
+    
+    <div class=" d-flex login">
+      <div>
+        <img class="mx-2" src="./assets/images/login.svg" />
+      </div>
+      <div class="log" *ngIf="userName; else loginLink">
+    <div class="custom-dropdown">
+      <!-- Display the username -->
+      <div class="username" (click)="toggleMenu()">{{ userName }}</div>
+
+      <!-- Dropdown menu -->
+      <div *ngIf="showMenu" class="dropdown-menu">
+        <a class="dropdown-item" (click)="onLogout()">Logout</a>
+      </div>
+    </div>
+  </div>
+              <ng-template #loginLink>
+                <a class="log" (click)="routerLogin()">Log in</a>
+              </ng-template>
+          
+         
+    </div>
+    <div class=" d-flex cart ">
+        <div >
+            <img class="mx-2" src="./assets/images/cart.svg"/>
+        </div>
+        <div >
+            <a class="log">Cart</a>
+        </div>
+      
+    </div>
+  </div>
+        
+     
+  </mat-toolbar>
+  <mat-toolbar class=" nav2 d-flex justify-content-between">
+    <div class="d-flex main"  (click)="routerHome()">
+         <div>
+                <img class="logo mx-2" src="./assets/images/woman.png"/>
+            </div>
+            <div class="d-flex align-items-center">
+                <h1 class="name">Shopping Cart</h1>
+            </div>
+    </div>
+    <div class="d-flex justify-content-center submain">
+        <a (click)="routerHome()" routerLinkActive="active"routerLinkActive="active" class="title">Home</a>
+        <a (click)="routerAllProducts()" routerLinkActive="active" class="title">Shop</a>
+        <a (click)="routerAboutUs()"  class=" title" routerLinkActive="active">About us</a>
+    </div>
+    
+   
+  </mat-toolbar>
+</nav>

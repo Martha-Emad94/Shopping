@@ -1,0 +1,24 @@
+
+<div class="mb-4">
+  <div class="home">
+    <img class="photo" src="./assets/images/main.png" alt="Main Image" />
+    <div class="shop">
+      <button class="btn" (click)="routerAllProducts()">Shop Now</button>
+    </div>
+  </div>
+  <div class="container ShowCategory mt-3">
+    <div class="row ">
+      <p class="text">List Of Categories</p>
+      
+      <div class="col  cards" *ngFor="let cat of categories; trackBy: trackByCategory"
+      (click)="Rouetproducts(cat.name)">
+        <div class="card animated-card" [@photosAnimation]="cat.toString()" >
+          <img class="card-img-top" [src]="cat.url" alt="Card image cap" />
+          <div class="card-body">
+            <p class="card-text">{{ cat.name }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

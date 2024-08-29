@@ -1,0 +1,105 @@
+<div class="main">
+    <img class="photo" src="./assets/images/main.png" alt="Main Image" />
+    <div class="login">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>Login</mat-card-title>
+        </mat-card-header>
+        <form [formGroup]="registerform" (ngSubmit)="onRegister()">
+          <mat-card-content >
+            <div class="mx-5" >
+              <mat-form-field appearance="fill" class="input-field">
+                <input matInput formControlName="name" placeholder="Name" required>
+                <mat-error *ngIf="registerform.get('name')?.invalid && registerform.get('name')?.touched">
+                  <ng-container *ngIf="registerform.get('name')?.errors?.['required']">User Name is required</ng-container>
+                  <!--<ng-container *ngIf="loginForm.get('email')?.errors?.['email']">Enter a valid email</ng-container>-->
+                  
+                </mat-error>
+              </mat-form-field>
+              
+            <mat-form-field appearance="fill" class="input-field">
+              <input matInput formControlName="email" placeholder="Email" required>
+              <mat-error *ngIf="registerform.get('email')?.invalid ">
+                <ng-container *ngIf="registerform.get('email')?.errors?.['required']">Email is required</ng-container>
+                <ng-container *ngIf="registerform.get('email')?.errors?.['email']">Enter a valid email</ng-container>
+              </mat-error>
+            </mat-form-field>
+  
+            <mat-form-field appearance="fill" class="input-field">
+              <input matInput formControlName="password" [type]="hide ? 'password' : 'text'"  placeholder="Password" required>
+              <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide Password'" [attr.aria-pressed]="hide">
+                <mat-icon>{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
+              </button>
+              <mat-error *ngIf="registerform.get('password')?.invalid ">
+                <ng-container *ngIf="registerform.get('password')?.errors?.['required']">Password is required</ng-container>
+                <ng-container *ngIf="registerform.get('password')?.errors?.['minlength']">Password must be at least 6 characters long</ng-container>
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="fill" class="input-field">
+              <input matInput formControlName="confirmpassword" [type]="hide ? 'password' : 'text'"  placeholder="Confirm Password" required>
+              <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide Password'" [attr.aria-pressed]="hide">
+                <mat-icon>{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
+              </button>
+              <mat-error *ngIf="registerform.get('confirmpassword')?.invalid ">
+                  <ng-container *ngIf="registerform.get('confirmpassword')?.errors?.['required']">Password is required</ng-container>
+                  <ng-container *ngIf="registerform.get('confirmpassword')?.errors?.['minlength']">Password must be at least 6 characters long</ng-container>
+                  <ng-container *ngIf="registerform.get('confirmpassword')?.errors?.['match']">  Passwords do not match</ng-container>
+                </mat-error> 
+            </mat-form-field>
+           
+            </div>
+             <!--
+          <div >
+                <mat-form-field appearance="fill" class="input-field">
+                    
+                    <input matInput formControlName="street"  placeholder="Street" />
+                    <mat-error *ngIf="registerform.get('street')?.errors?.['required']">
+                        Street is required.
+                      </mat-error>
+                  </mat-form-field>
+                
+                  <mat-form-field appearance="fill" class="input-field">
+                  
+                    <input matInput formControlName="city"  placeholder="City"/>
+                    <mat-error *ngIf="registerform.get('city')?.errors?.['required']">
+                        City is required.
+                      </mat-error>
+             
+                  </mat-form-field>
+                
+                  <mat-form-field appearance="fill" class="input-field">
+                   
+                    <input matInput formControlName="zipcode"  placeholder="Zip Code"/>
+                    
+                  </mat-form-field>
+                
+                  <mat-form-field appearance="fill" class="input-field">
+                    
+                    <input matInput formControlName="phone" placeholder="Phone" />
+                    <mat-error  *ngIf="registerform.get('phone')?.invalid ">
+                        <ng-container  *ngIf="registerform.get('phone')?.errors?.['required']">Phone is required </ng-container> 
+                        <ng-container  *ngIf="registerform.get('phone')?.errors?.['length']">
+                            Phone number must be exactly 11 digits. </ng-container> 
+                        </mat-error>
+                      </mat-form-field>
+                   
+                   
+              </div>--> 
+             
+              
+            </mat-card-content>
+            <span >
+                <a class="text-link aLink" >Have Already Account?</a>
+                <a class="log aLink" (click)="routerLogin()">Login</a>
+    
+              </span>
+          
+          <mat-card-actions class="d-flex justify-content-center">
+            <button mat-raised-button color="primary" class="login-button"  type="submit">Sign up</button>
+          </mat-card-actions>
+         
+        </form>
+      </mat-card>
+    </div>
+  </div>
+  

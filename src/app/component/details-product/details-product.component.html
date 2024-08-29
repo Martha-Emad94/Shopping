@@ -1,0 +1,60 @@
+<div class="container details my-3">
+    <ng-template #loadingTemplate>
+        <div class="loading">
+            <img  src="./assets/images/loading.svg"/>
+        </div>
+      </ng-template>
+    <div class="row ">
+        <ng-container *ngIf="!loading; else loadingTemplate">
+        @if(FilterProduct){
+                <div class="col-6">
+                <div class="img ">
+                    <img class="image" [src]="FilterProduct.image" />
+                </div>
+            </div>
+            <div class="col-6">
+               
+                <div class="card-body">
+                    <h5 class="card-title"> {{FilterProduct.title}} </h5>
+                    <p class="card-text ">Price: {{FilterProduct.price | currency}}</p>
+                    <p class="card-text ">Rate: {{FilterProduct.rating.rate}}</p>
+                    <p class="card-text ">Count: {{FilterProduct.rating.count}}</p>
+                    <p class="card-text ">Category: {{FilterProduct.category}}</p>
+                    <div class="card-text">
+                        <p>Quantity: </p>
+                        <input class="input" value="1" type="number" />
+                    </div>
+                    <div>
+                        <button class="add" type="submit">Add To Cart</button>
+                        <button class="love">
+                            <img  src="../assets/images/love.svg"/>
+                        </button>  
+                    </div>
+                    <div>
+                        <button class="buy" type="submit">Buy Now</button>
+                    </div>
+                    <div>
+                        <p class="card-text">Product Info:</p>
+                    <p>{{FilterProduct.description}}</p>
+                    </div>
+                    <div class="d-flex">
+                        <button class="back" (click)="Back()">Back</button>
+                        <div class="d-flex">
+                            <button class="bnt" (click)="prev()"><img  class="prev" src="../assets/images/prev.svg"/></button>
+                           
+                            <p>Prev | Next</p>
+                            <button class="bnt" (click)="next()"><img  class="prev" src="../assets/images/next.svg"/></button>
+                        </div>
+                        
+                    </div>
+                    
+    
+                </div>
+    
+            </div>
+            }
+        </ng-container>
+
+    </div>
+
+</div>

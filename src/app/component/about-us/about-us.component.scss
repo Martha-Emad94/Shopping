@@ -1,0 +1,47 @@
+.about-us-container {
+    display: flex;
+    flex-direction: column;
+    font-family: "Sofia", sans-serif;
+}
+
+.about-us-content {
+    padding: 20px;
+    background-color: #ffffff; /* لون خلفية أبيض للمحتوى */
+    border-radius: 8px; /* لتنعيم حواف المحتوى */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* إضافة ظل خفيف */
+}
+
+.about-us-header {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.about-us-header h1 {
+    color: #4d817b; /* لون أزرق داكن للعناوين */
+}
+
+.about-us-body {
+    margin-bottom: 20px;
+    color: #333; /* لون نص داكن للقسم الرئيسي */
+}
+
+.about-us-body p {
+    line-height: 1.6; /* تحسين قراءة النصوص */
+}
+
+.team-members {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.team-member {
+    flex: 1 1 calc(33.333% - 20px);
+    background-color: #9EABA2; /* خلفية بيضاء لبطاقات الفريق */
+    border-radius: 8px; /* لتنعيم حواف بطاقات الفريق */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* ظل خفيف حول البطاقة */
+    padding: 20px;
+    text-align: center;
+}
+
+

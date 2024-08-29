@@ -1,0 +1,233 @@
+.header {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+.nav1 {
+    background-color: rgb(211, 205, 205);
+    height: 50px;
+    color: black;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+
+.nav2 {
+    background-color: rgb(49, 49, 49);
+    height: 60px;
+    color: rgb(148, 148, 148);
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.spacer {
+    margin-left: 200px;
+    flex: 1;
+}
+
+.log {
+    text-decoration: none;
+    color: black;
+    font-family: "Sofia", sans-serif;
+    cursor: pointer;
+  
+}
+
+.main {
+    font-size: 25px;
+    font-family: "Sofia", sans-serif;
+    margin-left: 100px;
+    flex: 1;
+    cursor: pointer;
+}
+
+.submain {
+    margin-right: 100px;
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    width: 50px;
+    height: 50px;
+}
+
+.cart {
+    margin-right: 200px;
+    margin-left: 25px;
+}
+
+.title {
+    font-size: 15px;
+    font-weight: 400;
+    margin-right: 100px;
+    text-decoration: none;
+    color: rgb(148, 148, 148);
+    cursor: pointer;
+    font-family: "Trirong", serif;
+}
+
+.title:active {
+    color: white;
+}
+
+.title:hover {
+    color: rgba(145, 183, 185, 0.712);
+}
+
+.search::placeholder {
+    color: rgb(148, 148, 148);
+    font-weight: 200px;
+    font-family: "Sofia", sans-serif;
+}
+.dropdown-menu {
+    display: block;
+    position: absolute;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 8px rgba(168, 168, 168, 0.15);
+    top: 100%;
+    right: 0;
+    z-index: 1000;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .custom-dropdown {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+  }
+  
+  .username {
+ 
+    background-color: rgb(211, 205, 205);
+    color: #333;
+    font-family: "Sofia", sans-serif;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .dropdown-menu {
+    display: block;
+    position: absolute;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    top: 100%;
+    left: 0;
+    z-index: 1000;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100px;
+    border-radius: 5px;
+  }
+  
+  .dropdown-item {
+    padding: 10px;
+    text-decoration: none;
+    color: #333;
+    display: block;
+  }
+  
+  .dropdown-item:hover {
+    background-color: #f5f5f5;
+  }
+  
+
+  
+  .dropdown-menu a {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: #333;
+  }
+  
+  .dropdown-menu a:hover {
+    background-color: #f5f5f5;
+  }
+
+/* استفسارات الوسائط للاستجابة */
+@media (max-width: 1024px) {
+    .spacer {
+        margin-left: 50px;
+    }
+
+    .main {
+        margin-left: 50px;
+    }
+
+    .submain {
+        margin-right: 50px;
+    }
+
+    .cart {
+        margin-right: 50px;
+    }
+    .login{
+        margin-right: 50px;
+    }
+
+    .title {
+        margin-right: 50px;
+    }
+}
+
+@media (max-width: 768px) {
+    .nav1, .nav2 {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        height: auto;
+    }
+
+    .spacer {
+        margin-left: 0;
+        flex: none;
+    }
+
+    .main {
+        margin-left: 0;
+        margin-bottom: 10px;
+        font-size: 20px;
+    }
+
+    .submain {
+        margin-right: 0;
+        margin-bottom: 10px;
+        justify-content: center;
+    }
+
+    .title {
+        margin-right: 20px;
+    }
+
+    .cart {
+        margin: 10px 0;
+    }
+    .login{
+        margin: 10px 0;
+    }
+}
+
+@media (max-width: 576px) {
+    .main {
+        font-size: 18px;
+    }
+
+    .title {
+        font-size: 14px;
+        margin-right: 10px;
+    }
+
+    .logo {
+        width: 40px;
+        height: 40px;
+    }
+}

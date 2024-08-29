@@ -1,0 +1,42 @@
+<div class="main">
+    <img class="photo" src="./assets/images/main.png" alt="Main Image" />
+    <div class="login">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>Login</mat-card-title>
+        </mat-card-header>
+        <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+          <mat-card-content>
+            <mat-form-field appearance="fill" class="input-field">
+              <input matInput formControlName="email" placeholder=" Email" required>
+              <mat-error *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched">
+                <ng-container *ngIf="loginForm.get('email')?.errors?.['required']">Email is required</ng-container>
+                <ng-container *ngIf="loginForm.get('email')?.errors?.['email']">Enter a valid email</ng-container>
+                
+              </mat-error>
+            </mat-form-field>
+  
+            <mat-form-field appearance="fill" class="input-field">
+              <input matInput [type]="hide ? 'password' : 'text'" formControlName="password" placeholder="Password" required>
+              <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide Password'" [attr.aria-pressed]="hide">
+                <mat-icon>{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
+              </button>
+              <mat-error *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">
+                <ng-container *ngIf="loginForm.get('password')?.errors?.['required']">Password is required</ng-container>
+                <ng-container *ngIf="loginForm.get('password')?.errors?.['minlength']">Password must be at least 6 characters long</ng-container>
+              </mat-error>
+            </mat-form-field>
+            <span >
+                <a class="text-link aLink" >Create Account?</a>
+                <a class="sign aLink" (click)="routerRegister()">sign up</a>
+              </span>
+          </mat-card-content>
+          <mat-card-actions class="d-flex justify-content-center">
+            <button mat-raised-button color="primary" class="login-button" type="submit">Login</button>
+          </mat-card-actions>
+         
+        </form>
+      </mat-card>
+    </div>
+  </div>
+  
