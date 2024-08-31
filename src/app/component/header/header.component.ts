@@ -50,7 +50,7 @@ export class HeaderComponent implements OnInit {
 
   onLogout(): void {
     this.auth.logout(); // Call logout function from the service
-    this.showMenu = false; // Close the menu after logout
+  // Close the menu after logout
   }
 
   routerHome() {
