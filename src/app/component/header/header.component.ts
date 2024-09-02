@@ -11,12 +11,13 @@ import { FooterComponent } from '../footer/footer.component';
 import { CaptialPipe } from '../../shared/button/pipe/captial.pipe';
 import { ApiProuctService } from '../../services/Product/api-prouct.service';
 import { SearchService } from '../../services/search/search.service';
+import { CartService } from '../../services/cart/cart.service';
 
 @Component({
   selector: 'app-header',
   standalone: true,
   imports: [CommonModule, FormsModule, CaptialPipe, MatFormFieldModule, ReactiveFormsModule, MatInputModule, MatToolbarModule, HttpClientModule, FooterComponent],
-  providers: [ApiAuthService, ApiProuctService],
+  providers: [ApiAuthService, ApiProuctService,CartService],
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
@@ -25,9 +26,9 @@ export class HeaderComponent implements OnInit {
   @Input() isAuthenticated: boolean = false;
   showMenu: boolean = false;
   searchControl = new FormControl(''); // Reactive form control for the search input
-
+  cartCount: number = 0;
   constructor(private auth: ApiAuthService, private router: Router, private changeDetector: ChangeDetectorRef,
-     private apiproduct: ApiProuctService,private searchService: SearchService) {}
+     private apiproduct: ApiProuctService,private searchService: SearchService,private cartService: CartService) {}
 
   ngOnInit(): void {
     this.auth.getUserName().subscribe(name => {
@@ -41,6 +42,11 @@ export class HeaderComponent implements OnInit {
     // Emit search term when value changes
     this.searchControl.valueChanges.subscribe(term => {
       this.searchService.setSearchTerm(term ?? '');
+    });
+    
+    this.cartService.getCartCount().subscribe(count => {
+      this.cartCount = count;
+      console.log('Updated cart count:', this.cartCount);
     });
   }
 

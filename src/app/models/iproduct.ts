@@ -5,8 +5,8 @@ export interface Iproduct {
   price: number;
   category: string;
   image: string[];
-quantity:number;
-rating: {
+ quantity:number;
+ rating: {
   rate: number; 
   count: number; 
 };

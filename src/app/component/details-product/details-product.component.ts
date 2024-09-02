@@ -6,14 +6,14 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { ApiProuctService } from '../../services/Product/api-prouct.service';
+import { CartService } from '../../services/cart/cart.service';
 
 
 @Component({
   selector: 'app-details-product',
   standalone: true,
   imports: [FormsModule,CommonModule,HttpClientModule],
-
-providers: [ApiProuctService],
+  providers: [ApiProuctService,CartService],
   templateUrl: './details-product.component.html',
   styleUrl: './details-product.component.scss'
 })
@@ -22,10 +22,9 @@ export class DetailsProductComponent implements OnInit {
   FilterProduct:Iproduct|undefined;
   totalproduct:number=0;
   loading:boolean=false;
-  @Output() addToCartEvent = new EventEmitter<Iproduct>();
-  product: any;
-  cartService: any;
-  constructor(private productService: ApiProuctService,private router:Router,private rout:ActivatedRoute){
+  constructor(private productService: ApiProuctService,private router:Router,private rout:ActivatedRoute,
+    private cartservice:CartService
+  ){
 
   }
   ngOnInit(): void {
@@ -40,6 +39,7 @@ export class DetailsProductComponent implements OnInit {
     console.log(this.productId)
     if(this.productId){
       this.FetchProductId(this.productId)
+      
     }
    
     
@@ -60,9 +60,11 @@ export class DetailsProductComponent implements OnInit {
     }) 
   }
   addToCart(){
+    console.log('Product added to cart:', this.FilterProduct);
     if (this.FilterProduct) {
-      this.addToCartEvent.emit(this.FilterProduct) // Use the service to add product to the cart
+      this.cartservice.addToCart(this.FilterProduct); // إضافة المنتج إلى العربة
       console.log('Product added to cart:', this.FilterProduct);
+      alert("Product added to Cart successfully!")
     }
   }
  

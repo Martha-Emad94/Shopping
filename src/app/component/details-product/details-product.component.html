@@ -22,16 +22,13 @@
                     <p class="card-text ">Category: {{FilterProduct.category}}</p>
                     <div class="card-text">
                         <p>Quantity: </p>
-                        <input class="input" value="1" type="number" />
+                        <input class="input" [(ngModel)]="FilterProduct.quantity"  type="number" />
                     </div>
                     <div>
                         <button class="add" type="submit" (click)="addToCart()">Add To Cart</button>
                         <button class="love">
                             <img  src="../assets/images/love.svg"/>
                         </button>  
-                    </div>
-                    <div>
-                        <button class="buy" type="submit">Buy Now</button>
                     </div>
                     <div>
                         <p class="card-text">Product Info:</p>

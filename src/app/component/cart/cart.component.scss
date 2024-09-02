@@ -1,24 +1,37 @@
 body{
     background: #ddd;
-    min-height: 100vh;
+    height: 100vh;
     vertical-align: middle;
     display: flex;
     font-family: sans-serif;
     font-size: 0.8rem;
     font-weight: bold;
- 
+   
 }
 .title{
     margin-bottom: 5vh;
+}
+.countitem{
+    font-size: 1.5rem;
+    font-weight: bold;
 }
 .card{
     margin: auto;
     max-width: 950px;
     width: 90%;
+    font-family: "Sofia", sans-serif;
     box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     border-radius: 1rem;
     border: transparent;
     position: relative;
+}
+.input{
+    width: 25px;
+    height: 25px;
+}
+.border{
+    text-decoration: none;
+    cursor: pointer;
 }
 @media(max-width:767px){
     .card{
@@ -30,7 +43,15 @@ body{
     padding: 4vh 5vh;
     border-bottom-left-radius: 1rem;
     border-top-left-radius: 1rem;
-
+    overflow-y: scroll;
+    height:500px;
+}
+.back{
+    border-radius: 15px;
+    background-color: rgb(179, 199, 238);
+    color: rgb(14, 13, 13);
+    width:150px;
+    height: 33px;
 }
 .back-to-shop{
     margin-top: 4.5rem;
