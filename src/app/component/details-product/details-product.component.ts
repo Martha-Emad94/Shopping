@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 import { ActivatedRoute, Router } from '@angular/router';
 import { Iproduct } from '../../models/iproduct';
@@ -12,7 +12,8 @@ import { ApiProuctService } from '../../services/Product/api-prouct.service';
   selector: 'app-details-product',
   standalone: true,
   imports: [FormsModule,CommonModule,HttpClientModule],
-  providers: [ApiProuctService],
+
+providers: [ApiProuctService],
   templateUrl: './details-product.component.html',
   styleUrl: './details-product.component.scss'
 })
@@ -21,6 +22,9 @@ export class DetailsProductComponent implements OnInit {
   FilterProduct:Iproduct|undefined;
   totalproduct:number=0;
   loading:boolean=false;
+  @Output() addToCartEvent = new EventEmitter<Iproduct>();
+  product: any;
+  cartService: any;
   constructor(private productService: ApiProuctService,private router:Router,private rout:ActivatedRoute){
 
   }
@@ -55,6 +59,13 @@ export class DetailsProductComponent implements OnInit {
       
     }) 
   }
+  addToCart(){
+    if (this.FilterProduct) {
+      this.addToCartEvent.emit(this.FilterProduct) // Use the service to add product to the cart
+      console.log('Product added to cart:', this.FilterProduct);
+    }
+  }
+ 
   Back(){
     this.router.navigateByUrl("Product");
   }

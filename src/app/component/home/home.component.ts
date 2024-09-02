@@ -73,7 +73,6 @@ export class HomeComponent implements OnInit {
   }
   Rouetproducts(category: string){
     this.router.navigateByUrl(`Category/${category}`); 
-   
      }
      routerAllProducts(){
       this.router.navigateByUrl("/Product");

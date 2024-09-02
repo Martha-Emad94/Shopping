@@ -39,6 +39,7 @@ export class ProductListComponent implements OnInit ,OnChanges{
           next: (res) => {
             
               this.products = res;
+              this.filteredProducts = res;
               this.loading = false; // توقف التحميل عند اكتمال البيانات
            
           },

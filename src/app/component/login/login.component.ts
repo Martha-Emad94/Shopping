@@ -52,7 +52,9 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+ 
+  }
 
   onLogin() {
     if (this.loginForm.valid) {
@@ -72,7 +74,6 @@ export class LoginComponent implements OnInit {
             
             const isAuthenticated = localStorage.getItem('isAuthenticated');
             console.log('Is authenticated after login:', isAuthenticated);
-            
             this.showHeader = true;
             this.router.navigateByUrl('/home');
           } 

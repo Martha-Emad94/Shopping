@@ -67,4 +67,7 @@ export class HeaderComponent implements OnInit {
   routerAboutUs(){
     this.router.navigateByUrl('/about');
   }
+  routerCart() {
+    this.router.navigateByUrl('/cart');
+  }
 }
