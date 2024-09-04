@@ -7,6 +7,18 @@ body{
     font-size: 0.8rem;
     font-weight: bold;
    
+}.card{
+    margin: auto;
+    max-width: 950px;
+    width: 90%;
+    height: 70vh;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    font-family: "Sofia", sans-serif;
+    box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 1rem;
+    border: transparent;
+    position: relative;
 }
 .title{
     margin-bottom: 5vh;
@@ -15,47 +27,21 @@ body{
     font-size: 1.5rem;
     font-weight: bold;
 }
-.card{
-    margin: auto;
-    max-width: 950px;
-    width: 90%;
-    font-family: "Sofia", sans-serif;
-    box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    border-radius: 1rem;
-    border: transparent;
-    position: relative;
+.count{
+    width: 10px;
+    height: 25px;
+   
+    color: black;
 }
 .input{
-    width: 25px;
-    height: 25px;
+    display: flex;
+    justify-content: center;
 }
 .border{
     text-decoration: none;
     cursor: pointer;
 }
-.success-message {
-    position: fixed;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: #64b7d8;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 20px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-    z-index: 1000;
-    transition: opacity 0.5s ease-in-out;
-    opacity: 1;
-  }
-  
-  .success-message.ng-leave {
-    opacity: 0;
-  }
-@media(max-width:767px){
-    .card{
-        margin: 3vh auto;
-    }
-}
+
 .cart{
     background-color: #fff;
     padding: 4vh 5vh;
@@ -72,10 +58,22 @@ body{
     height: 33px;
 }
 .back-to-shop{
-    margin-top: 4.5rem;
+margin-top: 4.5rem;
 position:absolute;
 bottom:10px;
 cursor: pointer;
+}
+.total-price {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #000;
+    margin-left: 600px;
+  }
+  
+.foot{
+    display: flex !important;
+    justify-content: space-between !important;
+
 }
 @media(max-width:767px){
     .cart{
@@ -84,26 +82,12 @@ cursor: pointer;
         border-top-right-radius: 1rem;
     }
 }
-.summary{
-    background-color: #ddd;
-    border-top-right-radius: 1rem;
-    border-bottom-right-radius: 1rem;
-    padding: 4vh;
-    color: rgb(65, 65, 65);
-}
 @media(max-width:767px){
-    .summary{
-    border-top-right-radius: unset;
-    border-bottom-left-radius: 1rem;
+    .card{
+        margin: 3vh auto;
     }
 }
-.summary .col-2{
-    padding: 0;
-}
-.summary .col-10
-{
-    padding: 0;
-}.row{
+.row{
     margin: 0;
 }
 .title b{
@@ -156,39 +140,4 @@ input{
 input:focus::-webkit-input-placeholder
 {
       color:transparent;
-}
-.btn{
-    background-color: #000;
-    border-color: #000;
-    color: white;
-    width: 100%;
-    font-size: 0.7rem;
-    margin-top: 4vh;
-    padding: 1vh;
-    border-radius: 0;
-}
-.btn:focus{
-    box-shadow: none;
-    outline: none;
-    box-shadow: none;
-    color: white;
-    -webkit-box-shadow: none;
-    user-select: none;    
-    transition: none; 
-}
-.btn:hover{
-    color: white;
-}
-a{
-    color: black; 
-}
-a:hover{
-    color: black;
-    text-decoration: none;
-}
- #code{
-    background-image: linear-gradient(to left, rgba(255, 255, 255, 0.253) , rgba(255, 255, 255, 0.185)), url("https://img.icons8.com/small/16/000000/long-arrow-right.png");
-    background-repeat: no-repeat;
-    background-position-x: 95%;
-    background-position-y: center;
 }

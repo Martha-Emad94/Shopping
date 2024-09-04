@@ -65,12 +65,17 @@
   }
   
   .love {
-    border: 0.5px solid black;
-    background-color: white;
+    width: 35px;
+    height: 35px;
+    padding: 2px;
+    margin: -1px;
+  }
+  .heart{
     border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    margin-bottom: 15px;
+    border: 0.5px solid black;
+    background-color: #555353;
+    width: 45px;
+    height: 45px;
   }
   
   .buy {
@@ -124,6 +129,24 @@
    margin-left: 550px;
     width: 80px;
     height: 80px;
+  }
+  .success-message {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #64b7d8;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    transition: opacity 0.5s ease-in-out;
+    opacity: 1;
+  }
+  
+  .success-message.ng-leave {
+    opacity: 0;
   }
   @media (max-width: 768px) {
     .details {

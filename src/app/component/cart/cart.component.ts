@@ -18,48 +18,69 @@ export class CartComponent implements OnInit {
   cartItems: Iproduct[] = [];
   totalPrice: number = 0;
   totalItems:number=0;
+  cartTotal:number=0;
+  lenght:number=0;
+  showMessage: boolean=false;
   constructor(private router: Router, private cartService: CartService) {}
 
   ngOnInit(): void {
     this.cartService.getCartItems().subscribe(items => {
       this.cartItems = items;
-      this.calculateTotalPrice();
-      this.countItems();
-      console.log('Cart items updated:', this.cartItems); // تأكيد تحديث العناصر
+      this.updateCartSummary();
+    });
+
+    this.cartService.getCartTotal().subscribe(total => {
+      this.totalPrice = total;
     });
   }
 
-  calculateTotalPrice() {
-    this.totalPrice = this.cartItems.reduce((acc, item) => acc + item.price, 0);
+  updateCartSummary(): void {
+    this.countItems();
   }
 
-  getTotalPrice(): number {
-    return this.totalPrice;
+  countItems(): void {
+    this.totalItems = this.cartItems.reduce((acc, item) => acc + item.quantity, 0);
   }
-countItems(){
-  this.totalItems = this.cartItems.reduce((acc, item) => acc + item.quantity, 0);
+
+  getCountItems(): number {
+    return this.totalItems;
+  }
+onBuy():void{
+  console.log('Cart items before purchase:', this.cartItems); // Log cart items
+  if (this.cartItems.length > 0) {
+    this.cartService.moveCartToOrders();
+    this.showSuccessMessage()
+ 
+  } else {
+    alert('Your cart is empty!');
+  }
 }
-getCountItems(){
-  return this.totalItems;
+showSuccessMessage() {
+  this.showMessage = true;
+  setTimeout(() => {
+    this.showMessage = false;
+  }, 3000); // أخفي الرسالة بعد 3 ثوانٍ
 }
   removeFromCart(index: number): void {
     this.cartService.removeFromCart(index);
+    this.updateCartSummary();
   }
 
-
-  increaseQuantity(item: Iproduct) {
+  increaseQuantity(item: Iproduct): void {
     item.quantity++;
-    this.cartService.updateCart(this.cartItems); 
+    this.cartService.updateCart(this.cartItems);
+    this.updateCartSummary();
   }
 
-  decreaseQuantity(item: Iproduct) {
+  decreaseQuantity(item: Iproduct): void {
     if (item.quantity > 1) {
       item.quantity--;
-      this.cartService.updateCart(this.cartItems); 
+      this.cartService.updateCart(this.cartItems);
+      this.updateCartSummary();
     }
   }
 
-  routerHome() {
+  routerHome(): void {
     this.router.navigateByUrl('/home');
   }
 }

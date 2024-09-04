@@ -28,13 +28,7 @@
     flex: 1;
 }
 
-.log {
-    text-decoration: none;
-    color: black;
-    font-family: "Sofia", sans-serif;
-    cursor: pointer;
-  
-}
+
 
 .main {
     font-size: 25px;
@@ -114,6 +108,27 @@
   }
   .cart{
     cursor: pointer;
+  
+  }
+  .log {
+    text-decoration: none;
+    color: black;
+    font-family: "Sofia", sans-serif;
+    cursor: pointer;
+    position: relative;
+  
+}
+  .cartitem{
+    position: absolute;
+    top:0px;
+    right:190px;
+    background-color: #1b1b1b;
+    color: #f5f5f5;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    display: flex;
+    align-items: center;
   }
   .dropdown-menu {
     display: block;

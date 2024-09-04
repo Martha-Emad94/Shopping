@@ -12,6 +12,7 @@ import { CaptialPipe } from '../../shared/button/pipe/captial.pipe';
 import { ApiProuctService } from '../../services/Product/api-prouct.service';
 import { SearchService } from '../../services/search/search.service';
 import { CartService } from '../../services/cart/cart.service';
+import { Iproduct } from '../../models/iproduct';
 
 @Component({
   selector: 'app-header',
@@ -26,7 +27,8 @@ export class HeaderComponent implements OnInit {
   @Input() isAuthenticated: boolean = false;
   showMenu: boolean = false;
   searchControl = new FormControl(''); // Reactive form control for the search input
-  cartCount: number = 0;
+  cartItems: Iproduct[] = [];
+  cartCount:number=0;
   constructor(private auth: ApiAuthService, private router: Router, private changeDetector: ChangeDetectorRef,
      private apiproduct: ApiProuctService,private searchService: SearchService,private cartService: CartService) {}
 
@@ -43,13 +45,13 @@ export class HeaderComponent implements OnInit {
     this.searchControl.valueChanges.subscribe(term => {
       this.searchService.setSearchTerm(term ?? '');
     });
-    
-    this.cartService.getCartCount().subscribe(count => {
+
+    this.cartService.getCartLength().subscribe(count => {
       this.cartCount = count;
-      console.log('Updated cart count:', this.cartCount);
+      console.log('Cart count updated:', this.cartCount);
     });
   }
-
+ 
   toggleMenu(): void {
     this.showMenu = !this.showMenu; // Toggles the menu visibility
   }
@@ -76,4 +78,8 @@ export class HeaderComponent implements OnInit {
   routerCart() {
     this.router.navigateByUrl('/cart');
   }
+  routerAllOrders(){
+    this.router.navigateByUrl('/order');
+  }
+  
 }

@@ -1,4 +1,7 @@
 <div class="container details my-3">
+    <div class="success-message" *ngIf="showMessage">
+        Product added to Cart successfully!
+      </div>
     <ng-template #loadingTemplate>
         <div class="loading">
             <img  src="./assets/images/loading.svg"/>
@@ -22,13 +25,16 @@
                     <p class="card-text ">Category: {{FilterProduct.category}}</p>
                     <div class="card-text">
                         <p>Quantity: </p>
-                        <input class="input" [(ngModel)]="FilterProduct.quantity"  type="number" />
+                        <input class="input" [(ngModel)]="selectedQuantity" min="1" [max]="FilterProduct.rating.count"   type="number" />
                     </div>
                     <div>
                         <button class="add" type="submit" (click)="addToCart()">Add To Cart</button>
-                        <button class="love">
-                            <img  src="../assets/images/love.svg"/>
-                        </button>  
+                        <button (click)="toggleFavorite()" class="heart">
+                            <img class="love" 
+                              [src]="isFavorite ? './assets/images/loveblack.svg' : './assets/images/lovewhite.svg'"
+                              [ngStyle]="{'filter': isFavorite ? 'invert(0)' : 'invert(1)'}"
+                            />
+                          </button> 
                     </div>
                     <div>
                         <p class="card-text">Product Info:</p>

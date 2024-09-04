@@ -22,6 +22,9 @@ export class DetailsProductComponent implements OnInit {
   FilterProduct:Iproduct|undefined;
   totalproduct:number=0;
   loading:boolean=false;
+  selectedQuantity: number=0;
+  isFavorite: boolean = false;
+  showMessage: boolean=false;
   constructor(private productService: ApiProuctService,private router:Router,private rout:ActivatedRoute,
     private cartservice:CartService
   ){
@@ -60,12 +63,22 @@ export class DetailsProductComponent implements OnInit {
     }) 
   }
   addToCart(){
-    console.log('Product added to cart:', this.FilterProduct);
-    if (this.FilterProduct) {
-      this.cartservice.addToCart(this.FilterProduct); // إضافة المنتج إلى العربة
-      console.log('Product added to cart:', this.FilterProduct);
-      alert("Product added to Cart successfully!")
+    if (this.FilterProduct && this.selectedQuantity > 0 && this.selectedQuantity <= this.FilterProduct.rating.count) {
+      this.FilterProduct.rating.count -= this.selectedQuantity;
+      this.cartservice.addToCart({ ...this.FilterProduct, quantity: this.selectedQuantity });
+     this.showSuccessMessage();
+    } else {
+      alert("Invalid quantity selected.");
     }
+  }
+  toggleFavorite(){
+    this.isFavorite = !this.isFavorite;
+  }
+  showSuccessMessage() {
+    this.showMessage = true;
+    setTimeout(() => {
+      this.showMessage = false;
+    }, 3000); // أخفي الرسالة بعد 3 ثوانٍ
   }
  
   Back(){

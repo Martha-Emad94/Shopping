@@ -1,0 +1,49 @@
+<div class="container card">
+ 
+    <div class="col cart">
+        <div class="title mt-3">
+          <div class="row">
+            <div class="col"><h4><b>Shopping Cart</b></h4></div>
+            <div class="col d-flex justify-content-end countitem">{{getCountItems()}} items</div>
+          </div>
+        </div>
+        <div class="row d-flex justify-content-between">
+          
+            <ng-container *ngFor="let item of orders; let i = index;">
+                <div class="row main  align-items-center">
+                  
+              <div class="col-2"><img class="img-fluid" [src]="item.image"></div>
+              <div class="col">
+                <div class="">{{item.title}}</div>
+              </div>
+             
+                <div class="col count">
+                    <span class="input">Quantity: {{item.quantity}}</span>
+                  </div>
+                  <div class="col price">
+                   Price: {{ item.price * item.quantity|currency}}
+                  </div>
+           
+            
+              
+            </div>
+            <hr>
+        </ng-container>
+    
+    </div>
+    <div class="foot">
+        <div>
+          <div class="total-price">Total Price: {{ getCartTotal() }}</div>
+        </div>
+        
+        <div class="back-to-shop" (click)="routerHome()">
+          <button class="btn btn-primary back">
+            <a>&leftarrow;</a>
+            <span>Back to shop</span>
+          </button>
+        </div>
+      </div>
+      
+      </div>
+    
+</div>
