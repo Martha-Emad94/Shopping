@@ -17,8 +17,8 @@ import { Iproduct } from '../../models/iproduct';
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [CommonModule, FormsModule, CaptialPipe, MatFormFieldModule, ReactiveFormsModule, MatInputModule, MatToolbarModule, HttpClientModule, FooterComponent],
-  providers: [ApiAuthService, ApiProuctService,CartService],
+  imports: [CommonModule, FormsModule, MatFormFieldModule, ReactiveFormsModule, MatInputModule, MatToolbarModule, HttpClientModule],
+  providers: [ApiAuthService, ApiProuctService],
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })

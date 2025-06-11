@@ -11,7 +11,7 @@ export class CartService {
   private cartItemsSubject: BehaviorSubject<Iproduct[]> = new BehaviorSubject<Iproduct[]>(this.cartItems);
   private cartCountSubject: BehaviorSubject<number> = new BehaviorSubject<number>(0);
   private cartTotalSubject: BehaviorSubject<number> = new BehaviorSubject<number>(0);
-  private cartLengthSubject: BehaviorSubject<number> = new BehaviorSubject<number>(this.cartItems.length);
+  private cartLengthSubject: BehaviorSubject<number> = new BehaviorSubject<number>(0);
   private ordersSubject: BehaviorSubject<Iproduct[]> = new BehaviorSubject<Iproduct[]>([]);
   constructor() { 
     this.loadCartFromLocalStorage(); // Load cart from localStorage on service initialization
@@ -110,20 +110,20 @@ export class CartService {
   }
 
   // Load cart items from localStorage
-  private loadCartFromLocalStorage(): void {
+    private loadCartFromLocalStorage(): void {
     const storedCartItems = localStorage.getItem('cartItems');
     const storedOrders = localStorage.getItem('orders');
-    const storeLenght=localStorage.getItem('lenght')
+
     this.orders = storedOrders ? JSON.parse(storedOrders) : [];
     this.ordersSubject.next(this.orders);
-    this.cartItems.length=storeLenght?JSON.parse(storeLenght):0;
-    this.cartLengthSubject.next(this.cartItems.length)
+
     if (storedCartItems) {
       try {
         const parsedItems = JSON.parse(storedCartItems);
         this.cartItems = Array.isArray(parsedItems) ? parsedItems : [];
-        this.cartItemsSubject.next(this.cartItems);
         this.cartLengthSubject.next(this.cartItems.length);
+        this.cartItemsSubject.next(this.cartItems);
+        this.updateCartTotal();
       } catch (error) {
         console.error('Failed to parse cartItems from localStorage:', error);
         this.cartItems = [];

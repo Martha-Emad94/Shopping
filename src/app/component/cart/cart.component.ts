@@ -10,7 +10,6 @@ import { HttpClientModule } from '@angular/common/http';
   selector: 'app-cart',
   standalone: true,
   imports: [FormsModule, CommonModule,HttpClientModule],
-  providers: [CartService],
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.scss'] // يجب أن تكون styleUrls وليس styleUrl
 })

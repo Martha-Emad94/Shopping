@@ -13,7 +13,7 @@ import { CartService } from '../../services/cart/cart.service';
   selector: 'app-details-product',
   standalone: true,
   imports: [FormsModule,CommonModule,HttpClientModule],
-  providers: [ApiProuctService,CartService],
+  providers: [ApiProuctService],
   templateUrl: './details-product.component.html',
   styleUrl: './details-product.component.scss'
 })
